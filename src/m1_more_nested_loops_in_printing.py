@@ -9,10 +9,10 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
 
 def main():
     """ Calls the other functions to test them. """
-    run_test_triangle_right_justified()
-    run_test_triangle_upside_down()
+    # run_test_triangle_right_justified()
+    # run_test_triangle_upside_down()
     # run_test_vee()
-    # run_test_numbers_constant_forward()
+    run_test_numbers_constant_forward()
     # run_test_numbers_constant_backwards()
     # run_test_numbers_increasing_forward()
 
@@ -179,7 +179,7 @@ def vee(r):
     For purposes of "lining up", assume r is a single digit.
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # Done: 4. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -187,6 +187,22 @@ def vee(r):
     #   in this or the other problems in this module, as doing so would
     #   defeat the goal of providing practice at loops within loops.
     # ------------------------------------------------------------------
+
+    for j in range(r):
+
+        for n in range(r - (r - j)):
+            print(' ', end='')
+
+        for k in range(r - j):
+            print(k + 1, end='')
+
+        print('-', end='')
+
+        for s in range(r - j, 0, -1):
+            print(s, end='')
+
+
+        print()
 
 
 def run_test_numbers_constant_forward():
@@ -235,7 +251,7 @@ def numbers_constant_forward(r, maxnum, n):
     Preconditions:  r, maxnum and n are positive integers.
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # Done: 5. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # HINT: What loop structure do you need for this problem?
@@ -245,6 +261,15 @@ def numbers_constant_forward(r, maxnum, n):
     #   in this or the other problems in this module, as doing so would
     #   defeat the goal of providing practice at loops within loops.
     # ------------------------------------------------------------------
+
+    for j in range(r):
+        for s in range(maxnum):
+            for k in range(n):
+                print(s + 1, end='')
+            print(' ', end='')
+        print()
+
+
 
 
 def run_test_numbers_constant_backwards():

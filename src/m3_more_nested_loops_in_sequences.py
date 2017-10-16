@@ -4,20 +4,20 @@ in the context of SEQUENCES OF SUB-SEQUENCES.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
          their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
     """ Calls the other functions to test them. """
     # run_test_largest_number()
-    # run_test_largest_negative_number()
-    run_test_first_is_elsewhere_too()
+    run_test_largest_negative_number()
+    # run_test_first_is_elsewhere_too()
 
 
 def run_test_largest_number():
     """ Tests the    largest_number    function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # Done: 2. Implement this TEST function.
     #   It TESTS the  largest_number  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test beyond those we wrote.
     # ------------------------------------------------------------------
@@ -79,21 +79,24 @@ def largest_number(seq_seq):
     where each subsequence contains only numbers.
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
+
+    biggest_number = None
 
     for j in range(len(seq_seq)):
 
         substring = seq_seq[j]
-        biggest_number = substring[0]
-        for k in range(1, len(substring) - 1):
-            if substring[k] != []:
-                if substring[k] > biggest_number:
+        if substring != []:
+            for k in range(len(substring)):
+                if biggest_number is None:
                     biggest_number = substring[k]
-            else:
-                return None
-        return biggest_number
+                else:
+                    if substring[k] > biggest_number:
+                        biggest_number = substring[k]
+
+    return biggest_number
 
 
 
@@ -101,7 +104,7 @@ def largest_number(seq_seq):
 def run_test_largest_negative_number():
     """ Tests the    largest_negative_number    function. """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # Done: 4. Implement this TEST function.
     #   It TESTS the  largest_negative_number  function defined below.
     #
     #   Include enough tests to give you confidence that your solution
@@ -114,26 +117,26 @@ def run_test_largest_negative_number():
 
     # Test 1:
     expected = None
-    answer = largest_number([(1, 2, 4),
+    answer = largest_negative_number([(1, 2, 4),
                              (13, 10, 11, 7, 10),
                              [1, 2, 3, 4]])
     print('Expected and actual are:', expected, answer)
 
     # Test 2:
     expected = -1111111111111111
-    answer = largest_number(([], [-1111111111111111], []))
+    answer = largest_negative_number(([], [-1111111111111111], []))
     print('Expected and actual are:', expected, answer)
 
     # Test 3:
     expected = -1.2
-    answer = largest_number(([-3, 5, -10], [-1.2, 1, 6], [-7, -4, -9]))
+    answer = largest_negative_number(([-3, 5, -10], [-1.2, 1, 6], [-7, -4, -9]))
     print('Expected and actual are:', expected, answer)
 
     # TO DO 2 (continued): Add your ADDITIONAL test(s) here:
 
     # Test 4:
     expected = -11
-    answer = largest_number([(-20, -19, -18),
+    answer = largest_negative_number([(-20, -19, -18),
                              (-17, -16, -15, -14, -13),
                              [-12, -11]])
     print('Expected and actual are:', expected, answer)
@@ -162,7 +165,7 @@ def largest_negative_number(seq_seq):
     where each subsequence contains only numbers.
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # Done: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # CHALLENGE: Try to solve this problem with no additional sequences
@@ -170,9 +173,26 @@ def largest_negative_number(seq_seq):
     #   give sequence of sequences plus any non-list variables you want).
     # ------------------------------------------------------------------
 
-    largest_neg_number = 0
+    # largest_neg_number = 0
+
+    # for j in range(len(seq_seq)):
+
+    largest_neg_number = None
 
     for j in range(len(seq_seq)):
+        substring = seq_seq[j]
+
+        for k in range(len(substring)):
+            if largest_neg_number is None:
+                if substring[k] < 0:
+                    largest_neg_number = substring[k]
+            else:
+                if substring[k] < 0:
+                    if substring[k] > largest_neg_number:
+                        largest_neg_number = substring[k]
+
+    return largest_neg_number
+
 
 
 
@@ -409,7 +429,7 @@ def first_is_elsewhere_too(seq_seq):
     and the given argument is a sequence of sequences.
     """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # Done: 6. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -425,16 +445,23 @@ def first_is_elsewhere_too(seq_seq):
     #   practice at loops within loops (within loops within ...)
     # ------------------------------------------------------------------
 
-    for j in range(len(seq_seq)):
+    for j in range(len(seq_seq[0])):
 
-        substring = seq_seq[j]
-        first_item = substring[0]
+        # substring = seq_seq[j]
+        #
+        # for k in range(1, len(substring)):
+        #     if substring[k] == first_item:
+        #         return True
+        #
+        # return False
 
-        for k in range(1, len(substring)):
-            if substring[k] == first_item:
-                return True
 
-        return False
+        for k in range(1, len(seq_seq)):
+            for i in range(len(seq_seq[k])):
+                if (seq_seq[k][i] == seq_seq[0][j]):
+                    return True
+    return False
+
 
 
 # ----------------------------------------------------------------------
