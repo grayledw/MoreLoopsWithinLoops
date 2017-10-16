@@ -67,9 +67,6 @@ def draw_upside_down_wall(rectangle, n, window):
         corner_2 = rg.Point(corner_2.x - (rectangle.get_width() * (j+1))-(rectangle.get_width() / 2), corner_2.y - rectangle.get_height())
 
 
-
-
-
     window.render()
 
 
