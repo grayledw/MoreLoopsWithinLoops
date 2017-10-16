@@ -364,7 +364,7 @@ def numbers_increasing_forward(r, maxnum):
     Preconditions:  r and maxnum are positive integers.
     """
     # ------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # Done: 7. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -374,11 +374,11 @@ def numbers_increasing_forward(r, maxnum):
     # ------------------------------------------------------------------
 
     for j in range(r):
-        for s in range(j + 1):
-            for k in range(maxnum):
-                print(k + 1, end='')
-            print(' ')
-    print()
+        for s in range(1, maxnum + 1):
+            for k in range(s):
+                print(s, end='')
+            print(' ', end='')
+        print()
 
 
 
